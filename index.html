@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组</title>
+</head>
+<body>
+	<script>
+		//在任意数组中添加任意个数组元素
+		/*var arr = [13,60,698,56,45,99,2,87];
+		arradd(arr,'er','fg',54);
+		function arradd(arr){
+			console.log(arguments);
+			for(var i = 1;i < arguments.length ; i++){
+				arr[arr.length] = arguments[i];
+			}
+			console.log(arr);
+		}*/
+
+		//数组的排序
+		/*var arr = [13,60,698,56,45,99,2,87];
+		sort(arr);
+		function sort(arr,type){
+			//var type = type || "<" ;
+			type = type == undefined ? '>' : type;
+
+			if(type==">"){
+				sortup(arr);
+			}else{
+				sortdown(arr);
+			}
+		}
+		function sortup(arr){
+			for(var i = 0;i < arr.length;i ++){
+				for(var j = i+1; j < arr.length;j ++){
+					if(arr[i] > arr[j]){
+						var temp = arr[i];
+						arr[i] = arr[j];
+						arr[j] = temp;
+					}
+				}
+			}
+			console.log(arr);
+		}
+		function sortdown(arr){
+			for(var i = 0;i < arr.length;i ++){
+				for(var j = i+1; j < arr.length;j ++){
+					if(arr[i] < arr[j]){
+						var temp = arr[i];
+						arr[i] = arr[j];
+						arr[j] = temp;
+					}
+				}
+			}
+			console.log(arr);
+		}*/
+
+		//判断数组存在一个特定值，存在true，不存在false
+		/*var arr = [13,60,698,56,45,99,2,87];
+		var result = exsit(arr,60);
+		alert(result);
+		function exsit(arr,value){
+			if(!(typeof arr =="object" && arguments.length>1)){
+				return "输入错误！"
+			}
+			for(var i = 0;i < arr.length;i ++){
+				if(arr[i]==value){
+					return true;
+				}
+			}
+			return false;
+		}*/
+
+
+		/*
+		数组转换成字符串
+		参数：
+			arr:数组
+			str:连接符
+		 */
+		
+		var arr = [13,60,698,56,45,99,2,87];
+		var result = join(arr,'*');
+		console.log(result);
+		function join(arr,str){
+			// str = str == undefined ? '-' : str;
+			str = str || '-'
+			var result="";//空
+			for(var i = 0;i < arr.length; i ++){
+				// console.log(str1)
+				if(i<arr.length-1){
+					result += arr[i] + str;	
+				}else{
+					result += arr[i];
+				}	
+			}
+			return result;
+		}
+		/*
+		筛选出数组中的偶数
+		参数：
+			arr:数组
+		 */
+		
+		/*var arr = [13,60,698,56,45,99,2,87];
+		var result = filter(arr);
+		console.log(result);
+		function filter(arr){
+			var newarr = [];
+			for(var i = 0;i < arr.length;i ++){
+				if(arr[i]%2==0){
+					newarr[newarr.length] = arr[i];
+				}
+			}
+			return newarr;
+		}*/
+
+		//计算器函数
+		function aa(num1,num2){
+			return num1*4+num2;
+		}
+		function bb(num1,num2){
+			return num1/2*num2;
+		}
+		function cc(num1,num2){
+			return num1%3-num2;
+		}
+		function math(num1,num2,fn){
+			return fn(num1,num2);
+		}
+		var result = math(4,2,aa);
+		console.log(result);
+		var result = math(4,2,bb);
+		console.log(result);
+		var result = math(4,2,cc);
+		console.log(result);
+
+
+		//数组元素扩大两倍
+		var arr = [1,2,3,4,5,6,7,8];
+		var result = map(arr,function(value){
+			return value*2;
+		});
+		function map(arr,fn){
+			var newarr = [];
+			for(var i = 0;i <arr.length;i ++){
+				newarr[newarr.length] = fn(arr[i]);
+			}
+			return newarr;
+		}
+
+
+		//筛选数组中符合条件的元素
+		var arr = [1,2,3,4,5,6,7,8];
+		var result = filter(arr,function(value){
+			return value > 5;
+		});
+		console.log(result);
+		function filter(arr,fn){
+			var newarr = [];
+			for(var i = 0;i <arr.length;i ++){
+				if(fn(arr[i]))
+				newarr[newarr.length] = arr[i];
+			}
+			return newarr;
+		}
+
+		//
+	</script>
+</body>
+</html>
