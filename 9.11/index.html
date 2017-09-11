@@ -6,7 +6,142 @@
 </head>
 <body>
 	<script>
+		//闭包函数
+		function fn(){
+  			var num = 10;
+  			return fn1;
+  			function fn1(){
+ 				 num++;
+    			 return num;
+			}
+		}
+		var result = fn();
+		alert(result());
+
+
+		//箭头函数
+		var fn = a => a;
+		alert(fn(7));
+
+		var fn = (a,b) =>{
+			alert(a);
+			alert(b);
+			return [a,b];
+		}
+		alert(fn(2,4));
+
+		//声明变量
+		let num = 10;
+		function fn(){
+			console.log(num);
+			if(false){
+				var num = 'a'
+			}
+		}
+		fn();
+
+		//let声明
+		let num = 10;
+		console.log(num);
+		function fn(){
+			let num = 3;
+			console.log(num);
+		}
+		fn();
+
+		console.log(num);
+		var num = 10;
+		console.log(num);
+		function fn(){
+			console.log(num);
+			var num = 20;
+			console.log(num)
+		}
+		console.log(num);
+		fn();
+
+
+		//块级作用域
+		let num = 'abcd';
+		{
+			let num = 10;
+			{
+				let num = 20;
+				console.log(num);
+			}
+			console.log(num);
+		}
+		console.log(num);
+
+		//内置（JS内部提供)顶层（可以直接拿过来使用，不需要考虑作用域）函数
+		/*escape(s)对汉字进行编码，转换成计算机识别语言
+		unescape(s)将编码的字符串进行解码
+		Number(value)将其他数据类型转换成数字，NaN-->NaN，字符串转换时不识别进制，需要是标准型字符串或者是标准的数字型字符串，识别小数时需要符合小数的格式
+		String(s)转换成字符串
+		Boolean()同Boolean规则
+		parseInt()字符串转换成整数；字符串以数字或者空格、正负号开头，从第一个数字字符开始，直到第一个非数字字符结束，不识别.
+		parseFloat(s)字符串转换成浮点数；字符串以数字或者空格、正负号开头，从第一个数字字符开始，直到第一个非数字字符结束，识别.
+		isNaN(x)里面的值能够转换成数字，返回false*/
+
+		console.log(escape('哈哈哈哈，大傻瓜'));
+		console.log(unescape('%32y'));
+		console.log(Number('1233333'));
+		console.log(Number(NaN));
+		console.log(Number(undefined));
+		console.log(Number(null));
+		console.log(Number(true));
+		console.log(Number(0b11010));
+		console.log(Number(0110));
+		console.log(Number('abcd'));
+		console.log(Number('1222px'));
+		console.log(String(1222));
+		console.log(Boolean(true))
+		console.log(Boolean(0))
+		console.log(Boolean(undefined))
+		console.log(Boolean(null))
+		console.log(Boolean([]))
+		console.log(Boolean(''))
+		console.log(Boolean(NaN))
+		console.log(parseInt('100px'))
+		console.log(parseInt(1234444))
+		console.log(parseInt('123.333oo'))
+		console.log(parseInt('    -1223344pdpd'))
+		console.log(parseInt('a1122'))
+		console.log(parseInt(0b1111111))
+		console.log(parseFloat(123.4444))
+		console.log(parseFloat('123.4444'))
+		console.log(parseFloat('  222.333pxpx'))
+		console.log(parseFloat('  -222.44.55'))
+		console.log(isNaN(true))
+		console.log(isNaN(undefined))
+		console.log(isNaN(null))
+		console.log(isNaN(''))
+		console.log(isNaN('2222'))
+		console.log(isNaN('abcd'))
+
+
+		//使用构造函数创建对象
+		function Person(){
+
+		}
+		let zhangsan = new Person();//实例化一个对象
+		let lisi = new Person();//实例化一个对象
+		zhangsan.name = '张三';//给对象添加属性
+		zhangsan.age = 28;//给对象添加属性
+		zhangsan.say = function (){
+			alert(zhangsan.name);
+		}
+		lisi.name = '李四';//给对象添加属性
+		lisi.sex = '男';//给对象添加属性
+		alert(zhangsan.name);//访问对象
+		alert(zhangsan.age);//访问对象
+		alert(lisi.name);//访问对象
+		alert(lisi.sex);//访问对象
+		zhangsan.say();
+
 		
+		//JS源生创建对象
+		{}
 	</script>
 </body>
 </html>
