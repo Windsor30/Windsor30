@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数</title>
+</head>
+<body>
+	<script>
+		//自定义的表格
+		zdtable(5,7);
+		function zdtable(rows,cols){
+			var table = "<table>"
+			for(var i = 1;i <= rows;i ++){
+				table += "<tr>";
+				for(var j = 1;j <= cols; j++){
+					table += "<td>"+j+"-"+i+"</td>";
+				}
+				table += "</tr>"
+			}
+			table += "</table>";
+			document.write(table);
+		}
+
+		//自定义的*
+		star(7);
+		function star(rows){
+			for(var i = 1;i <= rows;i ++){
+				for(var j = 1;j <= rows-i ;j++){
+					document.write("-");
+				}
+				for(var j = 1;j <= 2*i-1 ;j++){
+					document.write("*");
+				}
+				document.write("<br>")
+			}
+		}
+
+		//数组的最大值
+		var arr = [13,60,698,56,45,99,2,87];
+		var arr1 = [153,63,80,56,5,99,21,73];
+		var arr2 = [83,650,38,46,79,39,52,7];
+		arrmax(arr);
+		arrmax(arr1);
+		arrmax(arr2);
+		function arrmax(MaxArray){
+			var max = MaxArray[0];
+			for(var i = 0;i < MaxArray.length;i++){
+				if(max < MaxArray[i]){
+					max = MaxArray[i];
+				}
+			}
+			console.log(max);
+		}
+
+		//数组的最小值
+		var arr = [13,60,698,56,45,99,2,87];
+		var arr1 = [153,63,80,56,5,99,21,73];
+		var arr2 = [83,650,38,46,79,39,52,7];
+		arrmin(arr);
+		arrmin(arr1);
+		arrmin(arr2);
+		function arrmin(MinArray){
+			var min = MinArray[0];
+			for(var i = 0;i < MinArray.length;i++){
+				if(min > MinArray[i]){
+					min = MinArray[i];
+				}
+			}
+			console.log(min);
+		}
+
+		//数组的排序
+		var arr = [13,60,698,56,45,99,2,87];
+		var arr1 = [113,50,8,63,57,89,43,76];
+		orderarr(arr);
+		orderarr(arr1);
+		function orderarr(OrderArray){
+			for(var i = 0;i < OrderArray.length;i ++){
+				for(var j = i+1; j < OrderArray.length;j ++){
+					if(OrderArray[i] < OrderArray[j]){
+						var temp = OrderArray[i];
+						OrderArray[i] = OrderArray[j];
+						OrderArray[j] = temp;
+					}
+				}
+			}
+			console.log(OrderArray);
+		}
+		
+		//数组的升序
+		var arr = [13,60,698,56,45,99,2,87];
+		var arr1 = [113,50,8,63,57,89,43,76];
+		seqarr(arr);
+		seqarr(arr1);
+		function seqarr(SeqArray){
+			for(var i = 0;i < SeqArray.length;i ++){
+				for(var j = i+1; j < SeqArray.length;j ++){
+					if(SeqArray[i] > SeqArray[j]){
+						var temp = SeqArray[i];
+						SeqArray[i] = SeqArray[j];
+						SeqArray[j] = temp;
+					}
+				}
+			}
+			console.log(SeqArray);
+		}
+
+		//删除数组中空元素
+		var arr = [13,60,698,,56,45,,99,2,87];
+		var arr1 = [113,,8,63,,7,89,,43,76,,];
+		delarr(arr);
+		delarr(arr1);
+		function delarr(DelArray){
+			var newarr=[];
+			for(var i = 0; i < DelArray.length;i ++){
+				if(DelArray[i]!=undefined){
+					newarr[newarr.length] = DelArray[i];
+				}
+			}
+			console.log(newarr);
+		}
+
+		//二维数组的最大值
+		var classes = [[70,80,90,85],[85,88,90,99],[50,75,70,65]];
+		maxer(classes);
+		function maxer(MaxErArray){
+			var max = MaxErArray[0][0];
+			for(var i = 0;i < MaxErArray.length; i++){
+				for(var j = 0;j < MaxErArray[i].length; j++){
+					if(max < MaxErArray[i][j]){
+						max = MaxErArray[i][j]
+					}
+				}
+			}
+			console.log(max);
+		}
+
+		//二维数组的最小值
+		var classes = [[70,80,90,85],[85,88,90,99],[50,75,70,65]];
+		miner(classes);
+		function miner(MinErArray){
+			var min = MinErArray[0][0];
+			for(var i = 0;i < MinErArray.length; i++){
+				for(var j = 0;j < MinErArray[i].length; j++){
+					if(min > MinErArray[i][j]){
+						min = MinErArray[i][j]
+					}
+				}
+			}
+			console.log(min);
+		}
+
+		//数组的遍历
+		var classes = [[70,80,90,85],[85,88,90,99],[50,75,70,65]];
+		bianarr(classes);
+		function bianarr(BianArray){
+			for(var i = 0; i < BianArray.length; i ++){
+				for(var j = 0; j < BianArray[i].length; j ++){
+					console.log(BianArray[i][j]);
+				}
+			}
+		}
+	</script>
+</body>
+</html>

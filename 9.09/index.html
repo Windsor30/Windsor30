@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9.9</title>
+</head>
+<body>
+	<script>
+		//数组中是否存在某一个元素，输出它第一次出现时的位置
+		//arr  任意数组；value  元素
+		/*var arr = [1,2,3,6,4,5,1,8,1,7];
+		console.log(indexof(arr,1));
+		function indexof(arr,value){
+			for(var i = 0;i < arr.length;i ++){
+				if(arr[i]==value &&(typeof value) == (typeof arr[i])){
+					return i;
+				}
+			}
+			return "不存在该元素";
+		}*/
+
+		//数组中是否存在某一个元素，输出它第一次出现时的位置
+		//arr  任意数组；value  元素
+		/*var arr = [1,2,3,6,4,5,1,8,1,7];
+		console.log(lastindexof(arr,1));
+		function lastindexof(arr,value){
+			for(var i = arr.length-1;i >= 0;i --){
+				if(arr[i]==value &&(typeof value) == (typeof arr[i])){
+					return i;
+				}
+			}
+			return "不存在该元素";
+		}*/
+
+		//数组进行反转
+		//arr 任意数组  newarr新数组
+		/*var arr = [1,2,3,6,4,5,1,8,1,7];
+		console.log(reverse(arr));
+		function reverse(arr){
+			var newarr = [];
+			for(var i = arr.length-1;i >= 0;i --){
+				//往数组里面添加
+				//newarr[newarr.length] = arr[i]
+				push(newarr,arr[i]);
+			}
+			return newarr;
+		}
+		function push(arr,...rest){
+			for(var i = 0;i < rest.length;i ++){
+				arr[arr.length] = rest[i];
+			}
+		}*/
+
+		//万能的删除
+		/*var arr = [1,2,3,6,4,5,1,8,1,7];
+		console.log(splice(arr,2,1));
+		function splice(arr,pos,num){
+			var newarr = [];
+			for(var i = 0;i < arr.length;i ++){
+				if(i >= pos && i < pos+num){
+					continue;
+				}
+				newarr[newarr.length] = arr[i];
+			}
+			return newarr;
+		}*/
+
+		//万能的添加
+		/*var arr = [1,2,3,6,4,5,1,8,1,7];
+		console.log(splices(arr,3,'x','y','z','b'));
+		function splices(arr,pos,...rest){
+			var newarr = [];
+			for(var i = 0;i < pos;i ++){
+				newarr[newarr.length] = arr[i];
+			}
+			for(var i = 0;i < rest.length;i ++){
+				newarr[newarr.length] = rest[i];
+			}
+			for(var i = pos;i < arr.length;i ++){
+				newarr[newarr.length] = arr[i];
+			}
+			return newarr;
+		}*/
+
+
+		//数组的万能增减
+		/*var arr = [1,2,3,6,4,5,1,8,1,7];
+		console.log(splicesa(arr,3,2,'x','y','z','b'));
+		function splicesa(arr,pos,num,...rest){
+			var newarr = splice(arr,pos,num);
+			if(rest.length > 0){
+			var	newarr = splices(newarr,pos,...rest);
+			}
+			return newarr;
+		}*/
+
+		//回调函数  映射
+		/*var arr = [1,2,3,4,5,6,7,8,9];
+		var result = map(arr,function(value){
+			return value/2;
+		})
+		console.log(result);
+		function map(arr,fn){
+			var newarr = [];
+			for(var i = 0;i < arr.length;i ++){
+				newarr[newarr.length] = fn(arr[i]);
+				// console.log(fn(arr[i]));
+			}
+			return newarr;
+		}*/
+
+		//回调函数 筛选符合条件的元素
+		/*var arr = [1,2,3,4,5,6,7,8,9];
+		var result = filter(arr,function(value){
+			return value % 2 == 0;
+		})
+		console.log(result);
+		function filter(arr,fn){
+			var newarr = [];
+			for(var i = 0;i < arr.length;i ++){
+				if(fn(arr[i])){
+					newarr[newarr.length] = arr[i];
+				}
+			}
+			return newarr;
+		}*/
+
+		//回调函数  数组某一个函数满足条件
+		/*var arr = [1,2,3,4,5,6,7,8,9];
+		var result = some(arr,function(value){
+			return value > 0;
+		})
+		console.log(result);
+		function some(arr,fn){
+			for(var i = 0;i < arr.length;i ++){
+				if(fn(arr[i])){
+					return true;
+				}
+			}
+			return false;
+		}
+		
+		var arr = [1,2,3,4,5,6,7,8,9];
+		var result = every(arr,function(value){
+			return value > 4;
+		})
+		console.log(result);
+		function every(arr,fn){
+			for(var i = 0;i < arr.length;i ++){
+				if(!(fn(arr[i]))){
+					return false;
+				}
+			}
+			return true;
+		}*/
+
+		//递归函数
+		fn(0);
+		function fn(num){
+			if(num<5){
+				fn(++num);
+			}
+			alert(num);
+		}		
+
+		//数组复制 递归
+		var arr = [1,2,3,4,5,6,7,[1,2,3,4,5,6,7]];
+		var arr1 = copy(arr);
+		console.log(arr1);
+		function copy(arr){
+			var newarr = [];
+			for(var i = 0;i < arr.length;i ++){
+				if(typeof arr[i] == 'object'){
+					newarr[i] = copy(arr[i]);
+				}else{
+					newarr[i] = arr[i];
+				}
+			}
+			return newarr;
+		}
+	</script>
+</body>
+</html>
