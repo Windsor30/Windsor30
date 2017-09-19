@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9.15 BOM浏览器对象模型</title>
+	<style>
+		button{
+			padding: 5px 10px;
+			background: #333333;
+			font-size: 14px;
+			border: none;
+			outline: none;
+			border-radius: 9px;
+			color: #eee;
+		}
+		a:focus{
+			color: pink;
+		}
+		a:visited{
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<h1><a href="history.html">这是index.html</a></h1>
+	<button id='forward'> 前进 </button>
+	<button id='back'> 后退 </button>
+	<button id='refresh'> 刷新 </button>
+	<script>
+		/*console.log(Number.prototype);
+		console.log(String.prototype);
+		console.log(Array.prototype);
+		console.log(Math);
+		console.log(Object.prototype);*/
+		// console.log(window);
+		/*alert(window.screenLeft);
+		alert(window.screenX);
+		alert(window.screenTop);
+		alert(window.screenY);
+		alert(window.innerWidth());
+		alert(window.outerWidth());
+		alert(window.innerHeight());
+		alert(window.outerHeight());
+		alert(document.documentElement.clientWidth);//文档对象 文档对象元素 客户端宽度
+		alert(document.documentElement.clientHeight);*/
+		/*window.top
+		window.frames
+		window.parent
+		window.self  ||  window == self
+
+		moveTo(100, 100);
+		moveBy(20, 20);
+		resizeTo(100, 100);
+
+		时间间隔函数
+		let t = window.setInterval(function(){}回调函数||传进一个函数名fn||或者一个箭头函数,1000周期时间（单位ms，最小周期为4毫秒）);//指定的周期不停地执行某个函数
+		window.clearInterval(t)//清掉时间函数
+
+		let w = window.setTimeout(fn,1000)//指定的周期只执行一次
+		window.clearTimeout(w);*/
+		/*setTimeout用递归模拟setInterval*/
+		/*var fn = function(){
+			alert(1);
+			windoe.setTimeout(fn, 1000);
+		}
+		fn();
+
+		window.confirm()//带有确定和取消按钮的对话框，浏览器自带的，不能修改
+
+		window.open(地址，名字，修饰，布尔值)//打开
+		window.close()//关闭*/
+
+		//n行n列的表格
+		/*function table(cols=10,rows=10){
+			document.write('<table border = 1 cellspacing = 1>');
+			for(let i = 1;i <= rows;i ++){
+				document.write('<tr>');
+				for(let j = 1;j <= cols;j ++){
+					document.write('<td>'+i+'-'+j+'</td>');
+				}
+				document.write('</tr>');
+			}
+			document.write('</table>');
+		}
+		table(12,12);
+
+		function table(cols = 10,rows = 10){
+			let table = '<table border = 1 cellspacing = 1>';
+			for(let i = 1;i <= rows;i ++){
+				table += '<tr>';
+				for(let j = 1;j <= cols;j ++){
+					table += '<td>'+j+'-'+i+'</td>';
+				}
+				table += '</tr>';
+			}
+			table += '</table>';
+			document.write(table);
+		}
+		table(10,10);*/
+
+		//Object（语法）与window（宿主环境，相当于全局）的区别
+		
+		//history：forward() back() go() 
+		
+		
+		//history：forward() back() go()
+		let forward = document.getElementById('forward');
+		let back = document.getElementById('back');
+		let refresh = document.getElementById('refresh');
+		forward.onclick = function(){
+			history.forward();
+		};
+		back.onclick = function(){
+			history.back();
+		}
+		refresh.onclick = function(){
+			history.go(0);
+		}
+	</script>
+</body>
+</html>

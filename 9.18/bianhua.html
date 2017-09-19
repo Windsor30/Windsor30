@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>变化</title>
+	<style>
+		.box{
+			width: 300px;
+			height: 300px;
+			background: pink;
+			margin: 10px auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<script>
+		let box = document.getElementsByClassName('box')[0];
+		let t = setInterval(fn, 100);
+		let speed = 10;
+		function fn(){
+			let w = parseInt(getComputedStyle(box,null).width);
+			let h = parseInt(getComputedStyle(box,null).height);
+			if(w>=500){
+				speed = -speed;
+			}
+			if(w<300){
+				speed = -speed;
+			}
+			box.style.width = `${w + speed}px`;
+			box.style.height = `${h + speed}px`;
+		}
+	</script>
+</body>
+</html>

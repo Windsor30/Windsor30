@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9.13</title>
+</head>
+<body>
+	<script>
+		function Person(name,age,sex,classes){
+			this.name = name;
+			this.age = age;
+			this.sex = sex;
+			this.classes = classes;
+		};
+		Person.prototype = {
+			sleep : function(){
+				alert(`${this.name}在睡觉`);
+				return 1;
+			},
+			play : function(){
+				alert(`${this.name}在玩儿`);
+				return 2;
+			},
+			study : function(){
+				alert(`${this.name}正在学习`);
+				return 3;
+			},
+		};//原型对象里面的方法不能删除
+		Person.prototype.eat = function(){
+			alert(`${this.name}：一起去吃饭？`)
+		};//在原型对象上添加一个方法
+		Person.prototype.habby = function(){
+			alert(`没有爱好吗？${this.name}`);
+		};
+		Person.prototype.happy = function(){
+			alert(this.classes);
+		}
+		Person.prototype = {
+			travel ：function(){
+				alert('旅游')
+			}
+		}   //覆盖之前的原型对象
+		let zhangsan = new Person('张三',20,'男','wuif1707-1');
+		zhangsan.play();
+		zhangsan.eat();
+		console.log(zhangsan);
+		alert(zhangsan.sex);
+		delete zhangsan.sex;//删掉对象的某一个属性
+		alert(zhangsan.sex);
+		console.log(zhangsan);
+		console.log(zhangsan.play());
+		let lisi = new Person('李四',18,'女','wuif1707-1');
+		lisi.study();
+		lisi.habby();
+		console.log(lisi);
+		console.log(lisi.study());
+		let wangwu = new Person('王五',20,'男','wuif1707-1');
+		wangwu.sleep();
+		wangwu.happy();
+		console.log(wangwu);
+		console.log(wangwu.sleep());
+		console.log(zhangsan.play == lisi.play);
+		console.log(lisi.eat == wangwu.eat);
+		console.log(wangwu.name == zhangsan.name);
+		wangwu = null;//删掉某一个对象
+		alert(wangwu);
+		console.log(zhangsan instanceof Person);
+		console.log(zhangsan instanceof Array);
+		let arr = [];
+		console.log(arr instanceof Array);//判断对象是否是从某一个构造函数中实例化出来
+		// console.log(arr instanceof Person);
+
+		//继承
+		function Persona(name,sex,age){
+			this.name = name;
+			this.sex = sex;
+			this.age = age;
+			this.eat = function(){
+				alert('能吃是福');
+			}
+			this.aa = function(){
+				alert('Persona构造函数哈哈');
+			}
+		};
+		Persona.prototype = {
+			relax : function(){
+				alert('放松');
+			},
+			aa : function(){
+				alert('Persona原型对象哈哈');
+			},
+		};
+		function Student(number,classes){
+			this.number = number;
+			this.classes = classes;
+			this.skill = function(){
+				alert('技能学习');
+			}
+			this.aa = function(){
+				alert('Student构造函数哈哈');
+			}
+		}
+		Student.prototype = new Persona('二哈','男',20);
+		Student.prototype.aa = function(){
+			alert('Student原型对象哈哈');
+		};
+		let erha = new Student(2017070101,'wuif1707');
+		console.log(erha);
+		erha.relax();
+		erha.aa();
+		console.log(erha.__proto__ == Student.prototype);
+		console.log(Student.prototype.__proto__ == Persona.prototype);
+		console.log(Persona.prototype.__proto__ == Object.prototype);
+		console.log(Object.prototype.__proto__);
+
+		//内置对象
+		//浏览器：BOM DOM 
+		//JS：Object String Number Boolean Array Date RegExp.... 
+		let str = new String('abcd张三efgh');
+		let str = 'abcd张三efgh';
+		console.log(String.prototype);
+		console.log(str.__proto__ == String.prototype);
+		console.log(str.length);
+		console.log(str.charAt(2));
+		console.log(str.charCodeAt(7));
+		console.log(String.fromCharCode(100));
+
+		console.log(str.indexOf('abcd'));
+		console.log(str.lastIndexOf('abcd'));
+		console.log(str.includes('a'));
+
+		console.log(str.slice(0,4));
+		console.log(str.slice(0,-1));
+		console.log(str.slice(3));
+		console.log(str.substring(0,3));
+		console.log(str.substring(3));
+		console.log(str.substr(1,3));
+		console.log(str.substr(5));
+
+		console.log(str.replace('张三','李四'));
+		//存在？
+		//替换
+		//更新
+		//返回
+		function replaceAll(str,fstr){
+			let star = '';
+			for(let i = 0;i < fstr.length;i ++){
+				star += '*';
+			}
+			let star = '*'.repeat(fstr.length);
+			while(str.includes(fstr)){
+				str = str.replace(fstr,star);
+			} 
+			return str;
+		}
+		let result = replaceAll(str,'abcd')
+		console.log(result);
+
+		console.log(str.match('张三'));
+
+		let str1 = 'a*b*c*d*e*f*g';
+		console.log(str1.split('*'));
+
+		//网址
+		let url = 'https://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.comhttps://www.baidu.com';
+		function replaceKeys(str,rstr){
+			let newarr = [];
+			while(str.includes(rstr)){
+				newarr.push(str.indexOf(rstr));
+				let star = '*'.repeat(rstr.length);
+				str = str.replace(rstr,star);
+			}
+			return newarr;
+		};
+		console.log(replaceKeys(url,'baidu'));
+
+		function find(str,gstr){
+			let arr = [];
+			for(let i = 0;i < str.length;i ++){
+				if(str.substr(i,gstr.length) == gstr){
+					arr.push(i);
+				}
+			}
+			return arr;
+		}
+		console.log(find(url,'baidu'));
+
+		function find1(str,gstr){
+			let arr = [];
+			for(let i = 0;i < str.length;i ++){
+				if(str.slice(i,i + gstr.length) == gstr){
+					arr.push(i);
+				}
+			}
+			return arr;
+		}
+		console.log(find1(url,'baidu'));
+	</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点击变色</title>
+	<style>
+		main{
+			width: 800px;
+			height: 500px;
+			border: 1px solid #dfdfdf;
+			position: relative;
+			margin: 10px auto;
+		}
+		main .btns{
+			width: 125px;
+			height: 15px;
+			position: absolute;
+			bottom: 20px;
+			left: 0;
+			right: 0;
+			margin: auto;
+			list-style: none;
+		}
+		li{
+			width: 15px;
+			height: 15px;
+			margin-right: 10px;
+			border-radius: 50%;
+			background: skyblue;
+			float: left;
+		}
+		.red{
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<ul class="btns">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</main>
+	<script>
+		let btn = document.getElementsByClassName('btns');
+		let lis = btn[0].getElementsByTagName('li');
+		for(let i = 0;i < lis.length;i ++){
+			lis[i].onclick = function(){
+				lis[i].className = 'red';
+				for(let j = 0;j < i;j ++){
+					lis[j].className = '';
+				}
+				for(let j = i+1;j < lis.length; j++){
+					lis[j].className = '';
+				}
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9.14数组去重</title>
+</head>
+<body>
+	<script>
+		/*console.log(Array.prototype);
+		let arr = [1,2,3,4,5,6,7,8];
+		let arr1 = ['a','b','c','d'];
+		console.log(arr);
+		console.log(arr.unshift(8,9));
+		arr.unshift(8,9);
+		console.log(arr);
+		arr.pop();
+		console.log(arr);
+		arr.shift();
+		console.log(arr);
+		arr.push(...arr1);
+		console.log(arr);
+
+		console.log(arr.join('-'));*/
+		console.log(Array.prototype); 
+		// let arr = new Array(1,2,3,4,5,6,7,8,3,5,6,9,0,5);
+		let arr = [1,2,3,4,5,6,7,8,3,5,6,9,0,5];
+		function delRepeat(arr){
+			let newarr = [];
+			for(let i = 0;i < arr.length; i ++){
+				if(!newarr.includes(arr[i])){
+					newarr.push(arr[i]);
+				}
+			}
+			return newarr;
+		}
+		console.log(delRepeat(arr));
+
+		//数组去重
+		function delRepeat1(arr){
+			let newarr = [];
+			for(let i = 0;i < arr.length;i ++){
+				let flag = true;
+				for(let j = i+1;j < arr.length;j ++){
+					if(arr[i] == arr[j]){
+						flag = false;
+						break;
+					}
+				}
+				if(flag){
+					newarr.push(arr[i]);
+				}
+			}
+			return newarr;
+		}
+		console.log(delRepeat1(arr));
+
+		/*
+		将一个函数扩充成一个方法
+		构造函数的原型对象添加方法
+		 */
+		Array.prototype.delRepeat2 = function(){
+			let newarr = [];
+			for(let i = 0; i < this.length; i ++){
+				if(!newarr.includes(this[i])){
+					newarr.push(this[i]);
+				}
+			}
+			return newarr;
+		}
+		console.log(arr.delRepeat2());
+	</script>
+</body>
+</html>

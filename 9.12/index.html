@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9.12</title>
+</head>
+<body>
+	<script>
+		/*function Star(name,date,character,color,luckywords){
+			this.name = name;
+			this.date = date;
+			this.character = character;
+			this.color = color;
+			this.lucky = luckywords;
+		}
+		let tianxie = new Star('天蝎座',10.23,'腹黑，性感','黑色、紫色',7);
+		tianxie.actor = '陈伟霆'
+		let shizi = new Star('狮子座',7.23,'自信，阳光','黄色',6);
+		shizi.clever = '聪明'
+		let mojie = new Star('摩羯座',11.23,'腹黑，蔫儿坏','绿色',2);
+		mojie.tese = '万人黑'
+		let tiancheng = new Star('天秤座',9.23,'公平，外貌协会','粉色',9);
+		tiancheng.star = '赵丽颖'
+		console.log(tianxie);
+		console.log(shizi);
+		console.log(mojie);
+		console.log(mojie['character'])
+		console.log(tiancheng);*/
+
+		/* for in*/
+		/*for(let i in tianxie){
+			console.log(`${i}---${tianxie[i]}`)
+		}*/
+
+
+		//json方法定义对象
+		/*let iphone8 = {
+			brand : 'iphone8',
+			size : 8,
+			color : 'blank',
+			music : function(){
+				alert('听音乐');
+			}
+		};
+		console.log(iphone8);
+		iphone8.music();*/
+
+		//Json方法定义
+		/*let iphone9 = {
+
+		};
+		iphone9.brand = 'iphone9';
+		iphone9.size = 9;
+		iphone9.color = 'pink';
+		iphone9.music = function(){
+			alert('听歌');
+		}
+		console.log(iphone9);*/
+
+
+		//类创建对象
+		/*class Student{
+			constructor(name,age,sex){
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+			}
+			study(value){
+				alert(value);
+			}
+		}
+		let zhangsan = new Student('张三',20,'男');
+		console.log(zhangsan);
+		zhangsan.study('学习');*/
+
+		//myArray1
+		/*let arr1 = new myArray1('a','b','c','d',1,2,3,4);
+		console.log(arr1);
+		function myArray1(){
+			this[0] = arguments[0];
+			this[1] = arguments[1];
+			this[2] = arguments[2];
+			this[3] = arguments[3];
+			this[4] = arguments[4];
+			this[5] = arguments[5];
+			this[6] = arguments[6];
+			this[7] = arguments[7];
+			this.length = arguments.length;
+		};*/
+
+
+		//myArray
+		function myArray(){
+			for(let i = 0;i < arguments.length;i ++){
+				this[i] = arguments[i];//argumnets的下标给数组
+				console.log(this[i]);
+			}
+			this.length = arguments.length;
+			//数组的增加
+			this.push = function(){
+				for(let i = 0;i < arguments.length;i ++){
+					this[this.length] = arguments[i];
+					this.length++;
+				}
+			};
+			//数组中某个元素第一次出现时的位置
+			this.indexof = function(value){
+				for(let i = 0;i < this.length;i ++){
+					if(this[i] == value){
+						return i;
+					}
+				}
+				return -1;
+			};
+			//数组中某个元素最后一次出现时的位置
+			this.lastindexof = function(value){
+				for(let i = this.length;i > 0;i --){
+					if(this[i] == value){
+						return i;
+					}
+				}
+				return -1;
+			};
+			//includes,数组中是否包含这个元素
+		    this.includes = function(value){
+		    	for(let i = 0;i < this.length;i ++){
+		    		if(this[i]==value){
+		    			return true;
+		    		}
+		    	}
+		    	return false;
+		    };
+		    //数组进行反转
+		    this.reverse = function(){
+		    	let newarr = new myArray;
+		    	for(let i = this.length-1;i >= 0;i --){
+		    		newarr.push(this[i]);
+		    	}
+		    	return newarr;
+		    };
+		    //join,将数组元素用连字符连接
+		    this.join = function(str='*'){
+		    	let result = '';
+		    	for(let i = 0;i < this.length;i ++){
+		    		if(i < this.length-1){
+		    			result += this[i] + str;
+		    		}else{
+		    			result += this[i];
+		    		}
+		    	}
+		    	return result;
+		    }
+		    //数组去空
+		    this.delNull = function(){
+		    	let newarr = new myArray;
+		    	for(let i = 0;i < this.length;i ++){
+		    		if(this[i] != undefined){
+		    			newarr.push(this[i]);
+		    		}
+		    	}
+		    	return newarr;
+		    }
+		    //数组的排序
+		    /*this.sort = function(type){
+		    	type = type == undefined ? '<' : type;
+		    	if(type=='>'){
+		    		sortup(arr);
+		    	}else{
+		    		sortdown(arr);
+		    	}
+		    };
+		    function sortup(arr){
+				for(let i = 0;i < arr.length;i ++){
+					for(let j = i+1; j < arr.length;j ++){
+						if(arr[i] > arr[j]){
+							let temp = arr[i];
+							arr[i] = arr[j];
+							arr[j] = temp;
+						}
+					}
+				}
+				return arr;
+			};
+			function sortdown(arr){
+				for(let i = 0;i < arr.length;i ++){
+					for(let j = i+1; j < arr.length;j ++){
+						if(arr[i] < arr[j]){
+							let temp = arr[i];
+							arr[i] = arr[j];
+							arr[j] = temp;
+						}
+					}
+				}
+				return arr;
+			};*/
+			//数组中存在某个元素满足条件
+			this.some = function(fn){
+				for(let i = 0;i < this.length;i ++){
+					if(fn(this[i])){
+						return true;
+					}
+				}
+				return false;
+			};
+			//数组中全部满足条件
+			this.every = function(fn){
+				for(let i = 0;i < this.length;i ++){
+					if(!(fn(this[i]))){
+						return false;
+					}
+				}
+				return true;
+			};
+			//映射，数组中每个元素扩大两倍
+			this.map = function(fn){
+				let newarr = new myArray;
+				for(let i = 0;i < this.length;i ++){
+					newarr.push(fn(this[i]));
+				}
+				return newarr;
+			};
+			//筛选，将数组中满足条件的输出
+			this.filter = function(fn){
+				let newarr = new myArray;
+				for(let i = 0;i < this.length;i ++){
+					if(fn(this[i])){
+						newarr.push(this[i]);
+					}
+				}
+				return newarr;
+			}
+		}
+		let arr = new myArray(1,2,3,4,5,undefined,6);
+		// arr.push(7,8,9);
+		console.log(arr);
+		let index = arr.indexof(1);
+		console.log(index);
+		let lastindex = arr.lastindexof(2);
+		console.log(lastindex);
+		let includes = arr.includes(3);
+		console.log(includes);
+		let reverse = arr.reverse();
+		console.log(reverse);
+		let join = arr.join('-');
+		console.log(join);
+		let delNull = arr.delNull();
+		console.log(delNull);
+		/*let sort = arr.sort();
+		console.log(sort);*/
+		let some = arr.some(function(value){
+			return value == 4;
+		});
+		console.log(some);
+		let every = arr.every(function(value){
+			return isNaN(value);
+		});
+		console.log(every);
+		let map = arr.map(function(value){
+			return value*5;
+		});
+		console.log(map);
+		let filter = arr.filter(function(value){
+			return isNaN(value) == false;
+		});
+		console.log(filter);
+	</script>	
+</body>
+</html>

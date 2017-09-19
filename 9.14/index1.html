@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9.14Math</title>
+	<style>
+		#box{
+			width: 300px;
+			height: 300px;
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<script>
+		//随机变化背景颜色
+		function color(){
+			let str = 'rgb(';
+			for(let i = 0;i < 3;i ++){
+				let num = Math.floor(Math.random()*256);
+				str += num + ',';
+			}
+			str = str.slice(0, -1);
+			str += ')';
+			return str;
+		}
+		let box = document.getElementById('box');
+		box.onmouseover = function(){
+			box.style.background = color();
+		}
+
+		/*从数组中随机抽取3个数，组成新的数组
+		  新数组   3个元素   
+		  不存在  push
+		  存在  再产生一个随机数*/
+		let arr = ['a','b','c','d','e','f','g'];
+		function Randoma(arr,n){
+			let newarr = [];
+			for(let i = 0;i < n;i ++){
+				let num = Math.floor(Math.random()*arr.length);
+				/*if(!newarr.includes(arr[num])){
+					newarr.push(arr[num]);
+				}else{
+					i --;
+				}*/
+				while(newarr.includes(arr[num])){
+					num = Math.floor(Math.random()*arr.length);
+				}//当数组存在时重新产生一个随机数，让数组中产生一些不重复的随机数
+				newarr.push(arr[num]);
+			}
+			return newarr;		
+		}
+
+
+		/*新数组
+		数组长度小于，产生随机数，往新数组中添加数组元素
+		当数组元素存在时，不输出
+		不存在时 添加新的数组元素*/
+		/*function Randoma(arr,n){
+			let newarr = [];
+			while(newarr.length < n){
+				let num = Math.floor(Math.random()*arr.length);
+				if(!newarr.includes(arr[num])){
+					newarr.push(arr[num]);
+				}
+			}
+			return newarr;
+		}*/
+		console.log(Randoma(arr,4));
+	</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+/*
+* @Author: Windsor
+* @Date:   2017-09-15 17:09:15
+* @Last Modified by:   Windsor
+* @Last Modified time: 2017-09-15 17:38:29
+*/
+*{
+	margin: 0;
+	padding: 0;
+	margin: auto;
+	list-style: none;
+	font-size: 14px;
+	font-family: sans-serif;
+}
+html,body{
+	background: rgba(0, 0, 0, 0.5);
+}
+main{
+	width: 350px;
+	height: 187px;
+	background: #fff;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	padding: 10px 15px;
+}
+h3{
+	font-size: 20px;
+	text-align: center;
+	line-height: 30px;
+	margin-bottom: 8px;
+}
+div{
+	width: 100%;
+	height: auto;
+	box-sizing: border-box;
+	line-height: 100px;
+	text-align: center;
+}
+main div span{
+	font-size: 18px;
+	color: #88d089;
+	padding: 0 2px;
+}

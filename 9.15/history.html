@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>History、location</title>
+	<style>
+		button{
+			padding: 5px 10px;
+			background: #333333;
+			font-size: 14px;
+			border: none;
+			outline: none;
+			border-radius: 9px;
+			color: #eee;
+		}
+		a:focus{
+			color: yellow;
+		}
+		a:visited{
+			color: brown;
+		}
+	</style>
+</head>
+<body>
+	<h1><a href="index.html">这是history.html</a></h1>
+	<button id="forward"> 前进 </button>
+	<button id="back"> 后退 </button>
+	<button id="refresh"> 刷新 </button>
+	<script>
+		//history：forward() back() go()
+		let forward = document.getElementById('forward');
+		let back = document.getElementById('back');
+		let refresh = document.getElementById('refresh');
+		forward.onclick = function(){
+			alert(history.length);
+			history.forward();
+		};
+		back.onclick = function(){
+			alert(history.length);
+			history.back();
+		}
+		refresh.onclick = function(){
+			history.go(0);
+		}
+	</script>
+</body>
+</html>
